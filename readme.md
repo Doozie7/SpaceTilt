@@ -22,6 +22,10 @@ Originally I need to understand was how to visualise the Gyro features of the bo
 3. **Objective**: Avoid colliding with asteroids for as long as possible.
 4. **Game Over**: When a collision occurs, the game displays a "Game Over" screen with your survival time.
 
+## What next
+
+* Android and iOS whatch game port
+
 ## Setup and Installation
 
 1. **Hardware Requirements**:
