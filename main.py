@@ -11,6 +11,7 @@ from qmi8658 import QMI8658
 from tft_config import config
 import vga1_8x8 as font
 import vga1_bold_16x16 as font2
+import gc
 
 # Constants
 SHIP_POLY = [(-7, -7), (7, 0), (-7, 7), (-3, 0), (-7, -7)]
@@ -236,6 +237,9 @@ def display_game_over(minutes, seconds):
 
 def main():
     while True:
+        # Call garbage collection
+        gc.collect()
+        
         # Show splash screen
         show_splash_screen(tft, "/assets/splash.jpg")
 
