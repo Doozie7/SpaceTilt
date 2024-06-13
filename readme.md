@@ -24,7 +24,7 @@ Originally I need to understand was how to visualise the Gyro features of the bo
 
 ## What next
 
-* Android and iOS watch game port
+* Android and iOS watch game port (what framework to use)
 
 ## Setup and Installation
 
