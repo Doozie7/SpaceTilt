@@ -56,6 +56,15 @@ class Poly:
         """Move the polygon based on its velocity."""
         if self.spin != 0:
             self.rotate(self.spin)
+        
+        # Add a small random factor to velocity
+        self.velocity_x += random.uniform(-0.1, 0.1)
+        self.velocity_y += random.uniform(-0.1, 0.1)
+        
+        # Ensure velocity is within limits
+        self.velocity_x = max(-self.max_velocity, min(self.max_velocity, self.velocity_x))
+        self.velocity_y = max(-self.max_velocity, min(self.max_velocity, self.velocity_y))
+        
         self.x += int(self.velocity_x)
         self.y += int(self.velocity_y)
         self.x %= tft.width()
@@ -71,7 +80,7 @@ class Poly:
 
 def show_splash_screen(tft, image_path):
     """Display splash screen."""
-    tft.jpg(image_path, 0, 0)
+    tft.jpg(image_path, 0, 0, gc9a01.SLOW)
     utime.sleep(3)
     tft.fill(gc9a01.BLACK)
 
@@ -236,9 +245,15 @@ def display_game_over(minutes, seconds):
     utime.sleep(3)
 
 def main():
+    counter = 0
     while True:
         # Call garbage collection
         gc.collect()
+        # Check memory usage
+        free_mem = gc.mem_free() / 1024  # Convert to KB
+        alloc_mem = gc.mem_alloc() / 1024  # Convert to KB
+        counter += 1
+        print(f"Allocated memory: {alloc_mem:.2f} KB, Free memory: {free_mem:.2f} KB, Counter: {counter}")
         
         # Show splash screen
         show_splash_screen(tft, "/assets/splash.jpg")
